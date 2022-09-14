@@ -19,7 +19,7 @@ const companyModel = {
   },
 
   getAll: async () => {
-    const query = 'SELECT * FROM teros.companies';
+    const query = 'SELECT * FROM teros.companies ORDER BY OrganisationName ASC';
     const [rows] = await connection.query(query);
     return rows;
   },
