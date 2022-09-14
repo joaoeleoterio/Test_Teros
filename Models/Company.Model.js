@@ -7,7 +7,7 @@ const companyModel = {
         id INT NOT NULL AUTO_INCREMENT,
         OrganisationName VARCHAR(255) NOT NULL,
         CustomerFriendlyLogoUri VARCHAR(255) NOT NULL,
-        AuthorisationServerId VARCHAR(255) NOT NULL,
+        OpenIDDiscoveryDocument VARCHAR(255) NOT NULL,
         PRIMARY KEY (id));
     `;
     await connection.query(sql);
@@ -27,10 +27,10 @@ const companyModel = {
   insertCompanies: (companies) => {
     companies.forEach((company) => {
       const query = `
-      INSERT INTO companies (OrganisationName, CustomerFriendlyLogoUri, AuthorisationServerId)
+      INSERT INTO teros.companies (OrganisationName, CustomerFriendlyLogoUri, OpenIDDiscoveryDocument)
       VALUES (?, ?, ?);
     `;
-      connection.query(query, [company.OrganisationName, company.CustomerFriendlyLogoUri, company.AuthorisationServerId]);
+      connection.query(query, [company.OrganisationName, company.CustomerFriendlyLogoUri, company.OpenIDDiscoveryDocument]);
     }
     );
   }

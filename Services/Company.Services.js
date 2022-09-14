@@ -7,24 +7,28 @@ const companyServices = {
   },
   getAll: async () => {
     const companies = await companyModel.getAll();
-    // console.log(companies);
     return companies;
   },
 
   insertCompanies: async () => {
     const apiDB = await axios.get('https://data.directory.openbankingbrasil.org.br/participants');
     const companiesDB = apiDB.data;
-    const filteredCompanies= [];
+    const filteredCompanies = [];
     companiesDB.map((company) => {
       const newCompany = {
         OrganisationName: company.OrganisationName,
         CustomerFriendlyLogoUri: company.AuthorisationServers[0].CustomerFriendlyLogoUri,
-        AuthorisationServerId: company.AuthorisationServers[0].AuthorisationServerId,
+        OpenIDDiscoveryDocument: company.AuthorisationServers[0].OpenIDDiscoveryDocument,
       }
       filteredCompanies.push(newCompany);
     });
-    console.log(filteredCompanies);
     await companyModel.insertCompanies(filteredCompanies);
+  },
+
+  updateCompanies: async () => {
+    await this.recreateTable();
+    await this.insertCompanies();
+    return 'Companies updated';
   }
 };
 
