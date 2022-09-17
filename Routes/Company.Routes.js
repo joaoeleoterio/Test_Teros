@@ -7,6 +7,5 @@ const companyRouter = express.Router();
 companyRouter.get('/', companyControllers.getAll);
 companyRouter.post('/recreateDB', companyControllers.recreateTable);
 companyRouter.post('/insertcompanies', companyControllers.insertCompanies);
-companyRouter.post('/updatecompanies', companyControllers.updateCompanies);
 
 module.exports = companyRouter;

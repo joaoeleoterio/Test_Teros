@@ -16,10 +16,6 @@ const companyControllers = {
     res.status(200).send('Companies inserted');
   },
 
-  updateCompanies: async (req, res) => {
-    const message = await companyServices.updateCompanies();
-    res.status(200).send(message);
-  }
 };
 
 module.exports = companyControllers;

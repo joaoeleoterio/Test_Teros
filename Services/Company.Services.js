@@ -5,6 +5,7 @@ const companyServices = {
   recreateTable: async () => {
     await companyModel.recreateTable();
   },
+  
   getAll: async () => {
     const companies = await companyModel.getAll();
     return companies;
@@ -25,11 +26,6 @@ const companyServices = {
     await companyModel.insertCompanies(filteredCompanies);
   },
 
-  updateCompanies: async () => {
-    await this.recreateTable();
-    await this.insertCompanies();
-    return 'Companies updated';
-  }
 };
 
 module.exports = companyServices;

@@ -3,7 +3,7 @@ const connection = require('../connection');
 const companyModel = {
   createTable: async () => {
     const sql = `
-      CREATE TABLE teros.companies (
+      CREATE TABLE IF NOT EXISTS teros.companies (
         id INT NOT NULL AUTO_INCREMENT,
         OrganisationName VARCHAR(255) NOT NULL,
         CustomerFriendlyLogoUri VARCHAR(255) NOT NULL,
