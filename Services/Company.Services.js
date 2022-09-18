@@ -12,6 +12,7 @@ const companyServices = {
   },
 
   insertCompanies: async () => {
+    await companyModel.recreateTable();
     const apiDB = await axios.get('https://data.directory.openbankingbrasil.org.br/participants');
     const companiesDB = apiDB.data;
     const filteredCompanies = [];

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import LoginForm from "../Components/LoginForm";
+import LoginPage from "../Components/LoginForm2";
 
 const Login = () => {
   React.useEffect(() => {
@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login__container">
-        <LoginForm />
+        <LoginPage />
       </div>
     </div>
   );

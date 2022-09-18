@@ -6,22 +6,20 @@ const Table = () => {
 
   const getOpenBankings = async () => {
     const response = await axios.get('http://localhost:3001/companies');
-    console.log(response.data);
     setOpenBankings(response.data);
   };
 
-  const refreshPage = (seconds) => {
-    setTimeout(() => {
-      window.location.reload(false);
-      axios.post('http://localhost:3001/companies/recreateDB');
-      axios.post('http://localhost:3001/companies/insertcompanies')
-      console.log('recreateDB and insertcompanies');
-    }, seconds * 1000);
+  const updateOpenBankings = async () => {
+    axios.post('http://localhost:3001/companies/recreateDB');
+    axios.post('http://localhost:3001/companies/insertcompanies')
+    window.location.reload();
   };
+
+  const timeRefreshMinutes = (minutes) => (minutes * 60 * 1000);
 
   React.useEffect(() => {
     getOpenBankings();
-    refreshPage(15);
+    setInterval(updateOpenBankings, timeRefreshMinutes(1));
   }, []);
 
   return (

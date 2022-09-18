@@ -33,7 +33,8 @@ const companyModel = {
       connection.query(query, [company.OrganisationName, company.CustomerFriendlyLogoUri, company.OpenIDDiscoveryDocument]);
     }
     );
-  }
+  },
+
 };
 
 module.exports = companyModel;
